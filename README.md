@@ -34,11 +34,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://rajat-multi-step-form.netlify.app/)
+- Live Site URL: [Hosted using Netlify](https://rajat-multi-step-form.netlify.app/)
 
 ## My process
 
