@@ -38,8 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://rajat-multi-step-form.netlify.app/)
 
 ## My process
 
@@ -60,9 +59,7 @@ I learned to create multi step form using vanilla react and custom hooks (Withou
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: I would like to create the same with react-hook-form instead of the custom hook and see how libraries like react-hook-form helps in state management.**
+**I would like to create the same with react-hook-form instead of the custom hook and see how libraries like react-hook-form helps in state management. Also update the tailwind config to add custom colors mentioned in the style guide**
 
 ### Useful resources
 
