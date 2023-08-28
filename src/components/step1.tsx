@@ -45,7 +45,7 @@ export const Step1 = ({ isMonthlyPlan, plan, updateFields, addOns }: Props) => {
               <div className="flex gap-4">
                 <div>
                   <img
-                    src={`./assets/images/icon-${option.type.toLowerCase()}.svg`}
+                    src={`/assets/images/icon-${option.type.toLowerCase()}.svg`}
                   />
                 </div>
                 <div>
