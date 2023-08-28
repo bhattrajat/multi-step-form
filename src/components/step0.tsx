@@ -1,5 +1,4 @@
 import { FormData } from "../App";
-
 type UpdateFields = (data: Partial<FormData>) => void;
 
 type Props = FormData & { updateFields: UpdateFields };

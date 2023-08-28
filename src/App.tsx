@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { useMultiStepForm } from "./hooks/useMultiStepForm";
 import { Step0 } from "./components/step0";
 import { Step1 } from "./components/step1";
 import { Step2 } from "./components/step2";
 import { Step3 } from "./components/step3";
 import { Step4 } from "./components/step4";
-
+import { EntryMotion } from "./components/entry-motion";
 export type FormData = {
   name: string;
   email: string;
@@ -63,21 +65,30 @@ function App() {
       onSubmit={handleFormSubmit}
       className="flex h-screen flex-col lg:h-[40rem] lg:w-1/2 lg:flex-row lg:gap-4 lg:rounded lg:bg-white lg:p-4 lg:shadow"
     >
-      <div className="lg:bg-sidebar-desktop flex h-40 items-center justify-center gap-2 bg-sidebar-mobile bg-cover bg-no-repeat lg:h-auto lg:w-1/3 lg:flex-col lg:items-stretch lg:justify-stretch lg:gap-4 lg:rounded-lg lg:px-4 lg:py-8">
+      <div className="flex h-40 items-center justify-center gap-2 bg-sidebar-mobile bg-cover bg-no-repeat lg:h-auto lg:w-1/3 lg:flex-col lg:items-stretch lg:justify-stretch lg:gap-4 lg:rounded-lg lg:bg-sidebar-desktop lg:px-4 lg:py-8">
         {Array(steps.length)
           .fill(0)
           .map((_, ind) => {
             return (
               <div key={ind} className="lg:flex lg:gap-3">
-                <div
-                  className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white ${
-                    currentStepIndex === ind
-                      ? "bg-blue-300 text-blue-900"
-                      : "text-white"
-                  }`}
+                <motion.div
+                  initial={false} //disables the mount animation
+                  animate={currentStepIndex === ind ? "active" : "inactive"}
+                  variants={{
+                    active: {
+                      backgroundColor: "var(--blue-300)",
+                      color: "var(--blue-900)",
+                    },
+                    inactive: {
+                      backgroundColor: "transparent",
+                      color: "var(--white)",
+                    },
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white`}
                 >
                   {ind + 1}
-                </div>
+                </motion.div>
                 <div className="hidden lg:block lg:text-white">
                   <div className="text-sm font-light uppercase">{`Step ${
                     ind + 1
@@ -89,16 +100,20 @@ function App() {
           })}
       </div>
       <div className="flex h-[calc(100vh_-_14rem)] flex-col justify-between lg:h-full lg:w-3/4">
-        <div className="relative -top-12 m-4 rounded bg-white px-4 py-8 shadow lg:static lg:h-full lg:p-0 lg:shadow-none">
-          {isSubmitted ? (
-            <Step4 />
-          ) : (
-            <CurrentStepComp
-              {...data}
-              updateFields={updateFields}
-              gotoStep={gotoStep}
-            />
-          )}
+        <div className="relative -top-12 m-4  rounded bg-white px-4 py-8 shadow lg:static lg:h-full lg:p-0 lg:shadow-none">
+          <AnimatePresence>
+            <EntryMotion key={currentStepIndex + Number(isSubmitted)}>
+              {isSubmitted ? (
+                <Step4 />
+              ) : (
+                <CurrentStepComp
+                  {...data}
+                  updateFields={updateFields}
+                  gotoStep={gotoStep}
+                />
+              )}
+            </EntryMotion>
+          </AnimatePresence>
         </div>
         {!isSubmitted && (
           <div className="mb-4 flex justify-between p-4 lg:h-20">

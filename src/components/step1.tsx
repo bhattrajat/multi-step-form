@@ -27,6 +27,7 @@ export const Step1 = ({ isMonthlyPlan, plan, updateFields, addOns }: Props) => {
               },
             })
           }
+          className="lg:flex lg:justify-between"
         >
           <RadioGroup.Label className="sr-only">Plan</RadioGroup.Label>
           {options.map((option) => (
@@ -39,10 +40,10 @@ export const Step1 = ({ isMonthlyPlan, plan, updateFields, addOns }: Props) => {
                     ? "bg-gray-100 bg-opacity-75 ring-2 ring-blue-900 ring-opacity-60"
                     : "bg-white"
                 }
-              relative mb-2 flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+              relative mb-2 flex cursor-pointer rounded-lg border-[1px] border-gray-300 px-5 py-4 shadow-md focus:outline-none lg:w-32`
               }
             >
-              <div className="flex gap-4">
+              <div className="flex gap-4 lg:flex-col">
                 <div>
                   <img
                     src={`/assets/images/icon-${option.type.toLowerCase()}.svg`}
