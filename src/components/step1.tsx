@@ -77,7 +77,7 @@ export const Step1 = ({ isMonthlyPlan, plan, updateFields, addOns }: Props) => {
                 },
                 addOns: addOns.map((addOn) => ({
                   ...addOn,
-                  price: value ? plan.price / 10 : plan.price * 10,
+                  price: value ? addOn.price / 10 : addOn.price * 10,
                 })),
               })
             }
