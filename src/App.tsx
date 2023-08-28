@@ -82,7 +82,7 @@ function App() {
                   <div className="text-sm font-light uppercase">{`Step ${
                     ind + 1
                   }`}</div>
-                  <div>{STEPS[ind]}</div>
+                  <div className="uppercase">{STEPS[ind]}</div>
                 </div>
               </div>
             );
